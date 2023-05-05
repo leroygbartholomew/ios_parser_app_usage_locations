@@ -151,7 +151,7 @@ def get_cache_sqlite(of_folder = './data_output/', if_folder = './data_to_parse/
 	return file_path
 	
 
-def start_parsing_kml(of_log, of_db, q_table = 'ZRTCLLOCATIONMO', of_folder = './data_output/', if_folder = './data_to_parse/'):
+def start_parsing_kml(of_base, of_log, of_db, q_table = 'ZRTCLLOCATIONMO', of_folder = './data_output/', if_folder = './data_to_parse/'):
 	
 	log_file = open(of_log, 'a')
 	file_path = '' # PRE-ASSIGN TO AVOID CRASH
@@ -356,7 +356,7 @@ def start_parsing_kml(of_log, of_db, q_table = 'ZRTCLLOCATIONMO', of_folder = '.
 			num_records = str(len(records))
 			log_file.write(f'Total rows in return: {num_records}\n')
 
-			out_file = f'{of_folder}iOS_device_locations_{time_zone_label}.kml'
+			out_file = f'{of_folder}{of_base}_{time_zone_label}.kml'
 			files_written.append(out_file)
 			file2write = open(out_file,'w')
 			file2write.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n")

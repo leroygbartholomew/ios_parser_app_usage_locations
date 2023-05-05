@@ -136,11 +136,13 @@ if of == "":
     of_log = './data_output/iOS_Parser_Output.log'
     of = './data_output/iOS_Parser_Output'
     workdb = 'iOS_Parser_Output.db'
+    of_base = 'iOS_Parser_Output'
 else:
     of_tsv = f'./data_output/{of}.tsv'
     of_db = f'./data_output/{of}.db'
     of_log = f'./data_output/{of}.log'
     workdb = f'{of}.db'
+    of_base = f'{of}'
 
 
 #GET DATE AND TIME FOR LOGGING
@@ -258,7 +260,7 @@ N:  	Nothing else.
 	
 	# EXPORT TO A KML FILE DIRECTLY FROM THE CACHE.SQLITE DATABASE
 	elif x == "KML":
-		module_locations_kml.start_parsing_kml(of_log, of_db, 'ZRTCLLOCATIONMO')
+		module_locations_kml.start_parsing_kml(of_base, of_log, of_db, 'ZRTCLLOCATIONMO')
 		
 		input('Press ENTER to return to the menu')
 		print()
@@ -282,7 +284,7 @@ N:  	Nothing else.
 	
 	# EXPORT THE LOCATIONS FROM THE _DEVICE_LOCATIONS TO A KML		
 	elif x == "LOCKML":
-		module_locations_kml.start_parsing_kml(of_log, of_db, '_device_locations')
+		module_locations_kml.start_parsing_kml(of_base, of_log, of_db, '_device_locations')
 		
 		input('Press ENTER to return to the menu')
 		print()
