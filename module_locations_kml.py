@@ -382,6 +382,28 @@ def start_parsing_kml(of_base, of_log, of_db, q_table = 'ZRTCLLOCATIONMO', of_fo
 					sspeed = record[8]
 					saggregatedlocations = record[9]
 					
+					
+					if stime_start == None:
+						stime_start = ''
+					if stime_end == None:
+						stime_end = ''
+					if shaccuracy == None:
+						shaccuracy = ''
+					if shaccuracytype == None:
+						shaccuracytype = ''
+					if shaccuracyunits == None:
+						shaccuracyunits = ''
+					if sdeleted == None:
+						sdeleted = ''
+					if slatitude == None:
+						slatitude = ''
+					if slongitude == None:
+						slongitude = ''
+					if sspeed == None:
+						sspeed = ''
+					if saggregatedlocations == None:
+						saggregatedlocations = ''
+					
 					if stime_start != '' or stime_start != None:
 						# FORMAT THE TIME FOR THE TIME USED TO ACTUALLY PUT THE LOCATION IN THE TIME LINE
 						stime_plot = stime_start[0:10] + 'T' + stime_start[11:19]
