@@ -225,6 +225,8 @@ N:  	Nothing else.
 	elif x == 'KNC':
 		# ASK ABOUT ACQUIRING KNOWLEDGE C DATA
 		module_sqlite_table_functions.import_knowledgec(of_db, of_log)
+		input('Press ENTER to return to the menu')
+		print()
 
 	elif x == 'IF2':
 		# GET THE ROOT PATH OF WHERE THE BIOMES ARE
@@ -237,34 +239,36 @@ N:  	Nothing else.
 		# IMPORT INFOCUS BIOM DATA INTO SQLITE DATABASE
 		module_biome_infocus.import_infocus_biomes(of_tsv, of_db, segb_list, of_log)
 		
-		#if_counter = module_biome_infocus.import_infocus_biomes(of_tsv, of_db, segb_list, of_log)
+		input('Press ENTER to return to the menu')
+		print()
 		
-		# ADD THE IF COUNTER TO THE OVERALL COUNTER
-		#r_counter += if_counter
-		#biome_count = True
-
-		#log_file = open(of_log, 'a')
-		#log_file.write('========================================\n')
-		#log_file.write('\n')
-
-		#if biome_count == True:
-		#	log_file.write(f'Total records parsed from BIOMES: {r_counter}\n')
-	
 	elif x == 'IF3':
 		# MAKE A COMBINED TABLE WITH ZOBJECT AND INFOCUS, DECODED TIMESTAMPS AND SECONDS
 		module_biome_infocus.combine_tables_biome_if_zobject(of_db, of_log)
+		
+		input('Press ENTER to return to the menu')
+		print()
 
 	elif x == 'IF4':
 		# ADD INFOCUS BIOME ARTIFACTS TO ZOBJECT
 		module_biome_infocus.add_infocus_to_zobject(of_db, of_log)
+		
+		input('Press ENTER to return to the menu')
+		print()
 	
 	# EXPORT TO A KML FILE DIRECTLY FROM THE CACHE.SQLITE DATABASE
 	elif x == "KML":
 		module_locations_kml.start_parsing_kml(of_log, of_db, 'ZRTCLLOCATIONMO')
+		
+		input('Press ENTER to return to the menu')
+		print()
 	
 	# IMPORT A CSV FILE WITH LOCATIONS (LIKE EXPORTED BY CELLEBRITE) INTO THE _DEVICE_LOCATIONS TABLE
 	elif x == 'CSVKML':
 		module_kml_cellebrite_import.import_locations_csv(of_db, of_log)
+		
+		input('Press ENTER to return to the menu')
+		print()
 	
 	# IMPORT THE CACHE.SQLITE ZRTCLLOCATIONMO DATABASE IN THE WORKING DATABASE
 	elif x == "IMPLOC":
@@ -272,14 +276,23 @@ N:  	Nothing else.
 		# DO THIS ONLY IF IT'S A VALID PATH
 		if return_1 != 'INVALID':
 			module_sqlite_table_functions.import_cache_sqlite_data(of_db, of_log, cache_path)
+		
+		input('Press ENTER to return to the menu')
+		print()
 	
 	# EXPORT THE LOCATIONS FROM THE _DEVICE_LOCATIONS TO A KML		
 	elif x == "LOCKML":
 		module_locations_kml.start_parsing_kml(of_log, of_db, '_device_locations')
+		
+		input('Press ENTER to return to the menu')
+		print()
 	
 	# INSERT THE TABLE FROM CACHE.SQLITE INTO THE _DEVICE_LOCATIONS TABLE
 	elif x == 'CMBLOC':
 		module_sqlite_table_functions.insert_zrt_locations(of_db, of_log)
+		
+		input('Press ENTER to return to the menu')
+		print()
 	
 	elif x == 'TENC':
 		module_general_functions.time_encoder()
