@@ -434,7 +434,7 @@ def start_parsing_kml(of_base, of_log, of_db, q_table = 'ZRTCLLOCATIONMO', of_fo
 					
 					s_line = ''
 
-			file2write.write("/Document>\n")
+			file2write.write("</Document>\n")
 			file2write.write("</kml>")
 			file2write.close()
 			
