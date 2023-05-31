@@ -158,7 +158,7 @@ def import_infocus_biomes(of_tsv, of_db, segb_list, of_log):
 	of_tsv_if = of_tsv[0:len(of_tsv)-4] + '_BIOMES_infocus.tsv'
 
 	tsv_output = open(of_tsv_if, 'w')
-	tsv_output.write('ZVALUEINTEGER\tZSTREAMNAME\tZSTARTDATE\tZSTARTDATE_T\tZENDDATE\tZENDDATE_T\tZVALUESTRING\tZUUID\tZTRANSITION\tFILENAME\tLOCATION_D\n')
+	tsv_output.write('ZSTREAMNAME\tZSTARTDATE\tZSTARTDATE_T\tZENDDATE\tZENDDATE_T\tZVALUESTRING\tZUUID\tZTRANSITION\tFILENAME\tLOCATION_D\n')
 
 	print('Gathering data... Please be patient')
 	print()
