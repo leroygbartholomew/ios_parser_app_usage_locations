@@ -310,7 +310,7 @@ def parse_infocus_bioms(bytes_to_search, buf_file, if_counter, sql_cur, tsv_out)
 
 		# OUTPUT THE RECORD TO THE TSV FILE
 
-		tsv_out.write(f'{zstreamname_t}\t{zstartdate_i}\t{zstartdate_t}\t{zenddate_i}\t{zenddate_t}\t{zvaluestring_t}\t{zuuid_t}\t{ztransition_t}\t{buf_file}\t{hit}\n')
+		tsv_out.write(f'{zstreamname_t}\t{zstartdate_i}\t{zstartdate_t}\t{zenddate_i}\t{zenddate_t}\t{sec_i}\t{zvaluestring_t}\t{zuuid_t}\t{ztransition_t}\t{buf_file}\t{hit}\n')
 
 		# ADD ONE TO THE COUNTER FOR THE RECORDS TOTAL
 		if_counter += 1
