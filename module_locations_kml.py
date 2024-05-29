@@ -5,7 +5,7 @@
 #       \private\var\mobile\Library\Caches\com.apple.routined\
 #           Cache.sqlite
 #
-# Version 1.0
+# Version 1.1 (updated for offset adjustment in Google Earth)
 # Date  2023-03-23
 # Copyright (C) 2023 - Aaron Dee Roberts
 #
@@ -247,6 +247,7 @@ def start_parsing_kml(of_base, of_log, of_db, q_table = 'ZRTCLLOCATIONMO', of_fo
 		'MST':{'UTC':'-0','MST':'-25200','MDT':'-21600'}, # -7, -6
 		'PST':{'UTC':'-0','PST':'-28800','PDT':'-25200'} # -8, -7
 	}
+	
 
 	# GETTING THE DESIRED TIME ZONE SET
 	print('Select the timezone you want to adjust for.')
@@ -309,9 +310,30 @@ def start_parsing_kml(of_base, of_log, of_db, q_table = 'ZRTCLLOCATIONMO', of_fo
 
 	files_written = [] # Set space to write list of files written to
 
+	getz = 0
+	s_getz = ''
+	
 	for time_zone_label, time_zone_offset in zone_dic.items(): # Put the dictionary items into the variables and loop through each item.
 		con.row_factory = sqlite3.Row
 		cur = con.cursor()
+		
+		getz = int(time_zone_offset) / 60 / 60
+
+		x = None
+		y = None
+
+		if getz < 0:
+			x = abs(getz) #Removes the negative
+			x = int(x)
+			y = str(x).zfill(2)
+			s_getz = '-' + y
+		elif getz > 0:
+			x = int(getz)
+			y = str(x).zfill(2)
+			s_getz = '+' + y
+		else:
+			s_getz = ''
+
 		
 		if q_table == 'ZRTCLLOCATIONMO':
 			sqlite_query_utc = f"""SELECT "<Placemark><name>" || DATETIME(ZTIMESTAMP + 978307200{time_zone_offset}, 'unixepoch') || "  {time_zone_label}  (" \
@@ -319,7 +341,7 @@ def start_parsing_kml(of_base, of_log, of_db, q_table = 'ZRTCLLOCATIONMO', of_fo
 			DATETIME(ZTIMESTAMP + 978307200{time_zone_offset}, 'unixepoch') || "</p>]]></description><TimeStamp><when>" || \
 			SUBSTR(DATETIME(ZTIMESTAMP + 978307200{time_zone_offset}, 'unixepoch'), 1, 10) || "T" || \
 			SUBSTR(DATETIME(ZTIMESTAMP + 978307200{time_zone_offset}, 'unixepoch'), 12, 8) || \
-			"</when></TimeStamp><Point><altitudeMode>clampedToGround</altitudeMode><coordinates>" \
+			"{s_getz}:00</when></TimeStamp><Point><altitudeMode>clampedToGround</altitudeMode><coordinates>" \
 			|| ZLONGITUDE || ", " || ZLATITUDE || "</coordinates></Point></Placemark>" AS placemark, \
 			ZTIMESTAMP, ZLONGITUDE, ZLATITUDE, ZALTITUDE, ZHORIZONTALACCURACY
 			FROM {q_table} \
