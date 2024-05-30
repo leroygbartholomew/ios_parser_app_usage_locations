@@ -9,6 +9,6 @@ The locations functions will export a KML file for using in Google Earth Pro tha
 
 App usage includes the importing of the inFocus BIOME data removed from the KnowledgeC.db in iOS 16+ then the combining to enable the querying of the data with the already existing queries. Additioally, the import will save the BIOME data in a CSV file as well as an SQLite database.
 
-This uses the Python 3 standard libraries only. So, it should work without worrying about PIPing any other libraries or having some missing and not being available.
+This uses the Python 3 standard libraries only. So, it should work without worrying about PIPing any other libraries or having some missing and not being available.  If the batch file doesn't work you may have to change "python3" to "python"
 
 https://github.com/leroygbartholomew/ios_parser_app_usage_locations

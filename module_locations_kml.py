@@ -317,14 +317,14 @@ def start_parsing_kml(of_base, of_log, of_db, q_table = 'ZRTCLLOCATIONMO', of_fo
 		con.row_factory = sqlite3.Row
 		cur = con.cursor()
 		
-		getz = int(time_zone_offset) / 60 / 60
+		# Get the integer of the already assigned time zone offset.
+		getz = int(int(time_zone_offset) / 60 / 60)
 
 		x = None
 		y = None
 
 		if getz < 0:
 			x = abs(getz) #Removes the negative
-			x = int(x)
 			y = str(x).zfill(2)
 			s_getz = '-' + y
 		elif getz > 0:
