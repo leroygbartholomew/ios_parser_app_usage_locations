@@ -178,6 +178,43 @@ list_lock = 1
 
 while list_lock == 1: 
 	
+	# lines = f"""
+# ==================================================================================
+# ==================================================================================
+# =================== WHAT WOULD YOU LIKE TO DO? ===================================
+# ==================================================================================
+# BIN: 	Basic Instructins
+# ==================================================================================
+# ============================ APP USAGE ===========================================
+# ==================================================================================
+# KNC: 	Import the knowledgeC.db tables of interest.
+
+# iF2:	Parse and import the inFocus BIOME artifacts into {workdb}.
+# if3:	Combine the inFocus BIOME and ZOBJECT tables into a new table
+# iF4: 	Add the inFocus BIOME data TO the ZOBJECT table (OPTIONAL)
+# ==================================================================================
+# =========================== LOCATIONS ============================================
+# ==================================================================================
+# IMPLOC: Import the Cache.sqlite ZRTCLLOCATIONMO table into {workdb}
+
+# CSVKML: Import Cellebrite exported KML data into {workdb}, locations table
+
+# CMBLOC: Combine the locations from ZRTCLLOCATIONMO into the
+	# {workdb}, locations table
+# LOCKML: Decode and export locations from {workdb} locations table
+	# to a KML file for use with Google Earth
+
+# KML:	Decode and export device locations directly from the
+	# Cache.sqlite database into a KML file for use with Google Earth
+# ==================================================================================
+# ========================== OTHER FUNCTIONS =======================================
+# ==================================================================================
+# TENC: 	Encode a date time to an epoch
+# ==================================================================================
+# N:  	Nothing else.
+# ==================================================================================
+# """
+
 	lines = f"""
 ===========================================================================================================
 WHAT WOULD YOU LIKE TO DO? 
