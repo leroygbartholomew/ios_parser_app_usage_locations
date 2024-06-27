@@ -332,7 +332,7 @@ def start_parsing_kml(of_base, of_log, of_db, q_table = 'ZRTCLLOCATIONMO', of_fo
 			y = str(x).zfill(2)
 			s_getz = '+' + y
 		else:
-			s_getz = ''
+			s_getz = '-00' # Acounts for UTC so Google Earth will still show the slider
 
 		
 		if q_table == 'ZRTCLLOCATIONMO':
